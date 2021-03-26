@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "DeleteInit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eliminar el cliente @ViewBag.deleting?</h2>
+<hr />
+<a class="btn btn-danger" href="/Home/DeleteCliente?cod_cliente= @ViewBag.deleting">
+    Eliminar
+</a>
+
+<a class="btn btn-info" href="/Home/Cliente">
+    Cancelar
+</a>
+<hr />

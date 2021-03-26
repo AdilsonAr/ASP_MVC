@@ -13,6 +13,8 @@ namespace Examen1ds39.Models
         private SqlCommand cmd;
         public DAOCliente()
         {
+            this.con = new SqlConnection();
+            this.cmd = new SqlCommand();
             this.con.ConnectionString = @"Data Source=ARKGB; Initial Catalog=examen1ds39; user id=adventure; password=Itca123!";
         }
         public List<Cliente> findAll()
@@ -163,7 +165,7 @@ namespace Examen1ds39.Models
             return lista;
         }
 
-        public Boolean save(Cliente cli)
+        public bool save(Cliente cli)
         {
             string command = "insert into clientes (nombres,apellidos,dui,direccion,nit) values ('{0}','{1}','{2}','{3}','{4}');";
             cmd.CommandText = string.Format(command, cli.nombres, cli.apellidos, cli.dui, cli.direccion, cli.nit);
@@ -181,7 +183,7 @@ namespace Examen1ds39.Models
             
         }
 
-        public Boolean update(Cliente cli)
+        public bool update(Cliente cli)
         {
             string command = "update clientes set nombres='{0}',apellidos='{1}',dui='{2}',direccion='{3}',nit='{4}' where cod_cliente={5};";
             cmd.CommandText = string.Format(command, cli.nombres, cli.apellidos, cli.dui, cli.direccion, cli.nit, cli.cod_cliente);
@@ -199,7 +201,7 @@ namespace Examen1ds39.Models
 
         }
 
-        public Boolean delete(int cod)
+        public bool delete(int cod)
         {
             cmd.CommandText = "delete clientes where cod_cliente=" + cod + ";";
             cmd.Connection = con;

@@ -12,6 +12,13 @@ namespace Examen1ds39.Models
         private SqlConnection con;
         private SqlCommand cmd;
 
+        public DAOUsuario()
+        {
+            this.con = new SqlConnection();
+            this.cmd = new SqlCommand();
+            this.con.ConnectionString = @"Data Source=ARKGB; Initial Catalog=examen1ds39; user id=adventure; password=Itca123!";
+        }
+
         public Usuario findOne(string nombre, string pass)
         {
             Usuario usuario = new Usuario();

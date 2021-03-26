@@ -1,38 +1,47 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Mi aplicación</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mt-0">
+        <a class="navbar-brand" href="/Home/Index">Mi aplicación</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <ul class="navbar-nav">
+                <li><a href="/Home/Index" class="btn bg-light mx-1">Inicio</a></li>
+                @if (!string.IsNullOrEmpty(ViewBag.isAuth))
+                {
+                    <li><a href="/Home/Cliente" class="btn bg-light mx-1">Administración de clientes</a></li>
+                }
+                <li><a href="/Home/About" class="btn bg-light mx-1">Acerca de</a></li>
+                <li><a href="/Home/Contact" class="btn bg-light mx-1">Contacto</a></li>
+                @if (!string.IsNullOrEmpty(ViewBag.isAuth))
+                {
+                    <li><a href="/Home/Logout" class="btn bg-light mx-1">Logout</a></li>
+                }
+                else
+                {
+                    <li><a href="/Home/Login" class="btn bg-light mx-1">Login</a></li>
+                }
+            </ul>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+
+    <div class="container ">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Adilson Geovany Arbuez Guzman</p>
         </footer>
     </div>
 
