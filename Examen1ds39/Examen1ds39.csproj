@@ -272,6 +272,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Cliente.cshtml" />
     <Content Include="Views\Home\DeleteInit.cshtml" />
+    <Content Include="Views\Home\UpdateInit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

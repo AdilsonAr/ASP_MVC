@@ -26,15 +26,17 @@ namespace Examen1ds39.Models
             cmd.CommandText = string.Format(command, nombre, pass);
             cmd.Connection = con;
             cmd.Connection.Open();
-            SqlDataReader data = cmd.ExecuteReader();
+            SqlDataReader data = cmd.ExecuteReader();          
             while (data.Read())
             {
                 usuario.cod_user = int.Parse(data[0].ToString());
                 usuario.nombre_usuario = data[1].ToString();
                 usuario.contra = data[2].ToString();
                 usuario.nivel_usuario = data[3].ToString();
+                cmd.Connection.Close();
                 return usuario;
             }
+            cmd.Connection.Close();
             return null;
         }
     }

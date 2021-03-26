@@ -35,7 +35,7 @@ namespace Examen1ds39.Controllers
         public ActionResult Login()
         {
             ViewBag.Message = "Identificate";
-
+            putVariables();
             return View();
         }
         [HttpPost]
@@ -72,11 +72,12 @@ namespace Examen1ds39.Controllers
         public ActionResult Cliente()
         {
             List<Cliente> lista = new List<Cliente>();
-            if (System.Web.HttpContext.Current.Session["nivel"] == null || string.IsNullOrEmpty(System.Web.HttpContext.Current.Session["nivel"].ToString()))
+            if (System.Web.HttpContext.Current.Session["nivel"] == null)
             {
                 return RedirectToAction("Login");
             }
-            if (TempData["filter"] == null || string.IsNullOrEmpty(TempData["filter"].ToString()))
+
+            if (TempData["filter"] == null)
             {
                 lista = daoCli.findAll();
             }
@@ -105,20 +106,28 @@ namespace Examen1ds39.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateCliente(Cliente cli)
+        public ActionResult UpdateInit(Cliente cli)
         {
             TempData["update"] = "false";
             if (ModelState.IsValid && cli.cod_cliente > 0)
             {
                 if (daoCli.update(cli)) TempData["update"] = "true";
             }
+            else {
+                ViewBag.editingCli = cli;
+                putVariables();
+                return View();
+            }
             return RedirectToAction("Cliente");
         }
 
 
         public ActionResult UpdateInit(int cod_cliente)
-        {
-            return RedirectToAction("Cliente");
+        {         
+            Cliente cl = daoCli.findByCod_cliente(cod_cliente);                   
+            ViewBag.editingCli = cl;
+            putVariables();
+            return View();
         }
 
         public ActionResult Search(string opciones, string valor)
@@ -181,6 +190,7 @@ namespace Examen1ds39.Controllers
         public ActionResult DeleteInit(int cod_cliente)
         {
             ViewBag.deleting = cod_cliente;
+            putVariables();
             return View();
         }
         private void putVariables()

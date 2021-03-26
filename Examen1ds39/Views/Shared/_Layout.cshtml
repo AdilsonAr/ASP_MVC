@@ -21,13 +21,13 @@
                 <li><a href="/Home/Index" class="btn bg-light mx-1">Inicio</a></li>
                 @if (!string.IsNullOrEmpty(ViewBag.isAuth))
                 {
-                    <li><a href="/Home/Cliente" class="btn bg-light mx-1">Administración de clientes</a></li>
+                    <li><a href="/Home/Cliente" class="btn bg-light mx-1">Administración de clientes</a></li>                   
                 }
                 <li><a href="/Home/About" class="btn bg-light mx-1">Acerca de</a></li>
                 <li><a href="/Home/Contact" class="btn bg-light mx-1">Contacto</a></li>
                 @if (!string.IsNullOrEmpty(ViewBag.isAuth))
-                {
-                    <li><a href="/Home/Logout" class="btn bg-light mx-1">Logout</a></li>
+                {                  
+                    <li><a href="/Home/Logout" class="btn bg-light mx-1">Logout</a></li>                  
                 }
                 else
                 {

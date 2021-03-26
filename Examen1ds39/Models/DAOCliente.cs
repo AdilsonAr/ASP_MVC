@@ -35,6 +35,7 @@ namespace Examen1ds39.Models
                 cli.nit= data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -54,6 +55,7 @@ namespace Examen1ds39.Models
                 cli.direccion = data[4].ToString();
                 cli.nit = data[5].ToString();
             }
+            cmd.Connection.Close();
             return cli;
         }
 
@@ -76,6 +78,7 @@ namespace Examen1ds39.Models
                 cli.nit = data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -98,6 +101,7 @@ namespace Examen1ds39.Models
                 cli.nit = data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -119,6 +123,7 @@ namespace Examen1ds39.Models
                 cli.nit = data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -141,6 +146,7 @@ namespace Examen1ds39.Models
                 cli.nit = data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -162,6 +168,7 @@ namespace Examen1ds39.Models
                 cli.nit = data[5].ToString();
                 lista.Add(cli);
             }
+            cmd.Connection.Close();
             return lista;
         }
 
@@ -172,12 +179,13 @@ namespace Examen1ds39.Models
             cmd.Connection = con;
             cmd.Connection.Open();
             int rows=cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
             if (rows > 0)
             {
                 return true;
             }
             else
-            {
+            {              
                 return false;
             }
             
@@ -190,6 +198,7 @@ namespace Examen1ds39.Models
             cmd.Connection = con;
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
             if (rows > 0)
             {
                 return true;
@@ -207,6 +216,7 @@ namespace Examen1ds39.Models
             cmd.Connection = con;
             cmd.Connection.Open();
             int rows = cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
             if (rows > 0)
             {
                 return true;

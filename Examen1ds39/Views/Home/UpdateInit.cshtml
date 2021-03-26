@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "UpdateInit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @model Examen1ds39.Models.Cliente
+    Examen1ds39.Models.Cliente cli = ViewBag.editingCli;
+}
+
+    <h2>Modificar cliente @cli.cod_cliente</h2>
+
+@using (Html.BeginForm("UpdateInit", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary("", htmlAttributes: new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.cod_cliente, htmlAttributes: new { @value = cli.cod_cliente })
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.nombres, null, htmlAttributes: new { @class = "text-dark" })</td>
+            <td>@Html.TextBoxFor(m => m.nombres, null, htmlAttributes: new { @class = "form - control" })</td>
+            <td><span class="badge badge-light">@cli.nombres</span></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.apellidos, null, htmlAttributes: new { @class = "text-dark" })</td>
+            <td>@Html.TextBoxFor(m => m.apellidos, null, htmlAttributes: new { @class = "form - control" })</td>
+            <td><span class="badge badge-light">@cli.apellidos</span></td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.dui, null, htmlAttributes: new { @class = "text-dark" })</td>
+            <td>@Html.TextBoxFor(m => m.dui, null, htmlAttributes: new { @class = "form - control" })</td>
+            <td><span class="badge badge-light">@cli.dui</span></td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.direccion, null, htmlAttributes: new { @class = "text-dark" })</td>
+            <td>@Html.TextBoxFor(m => m.direccion, null, htmlAttributes: new { @class = "form - control" })</td>
+            <td><span class="badge badge-light">@cli.direccion</span></td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(m => m.nit, null, htmlAttributes: new { @class = "text-dark" })</td>
+            <td>@Html.TextBoxFor(m => m.nit, null, htmlAttributes: new { @class = "form - control" })</td>
+            <td><span class="badge badge-light">@cli.nit</span></td>
+        </tr>
+
+    </table>
+    <input type="submit" name="boton" value="Modificar" class="btn btn-primary" />
+    <a class="btn btn-danger" href="/Home/Cliente">
+        Cancelar
+    </a>
+}
+

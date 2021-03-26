@@ -3,8 +3,9 @@
     ViewBag.Title = "Cliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
     @model Examen1ds39.Models.Cliente
-    
+
     List<Examen1ds39.Models.Cliente> list = ViewBag.lista;
+
 }
 <br />
 <h2>Clientes</h2>
@@ -12,51 +13,64 @@
 @using (Html.BeginForm("Cliente", "Home", FormMethod.Post))
 {
     @Html.ValidationSummary("", htmlAttributes: new { @class = "text-danger" })
-    @Html.LabelFor(m => m.nombres, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.nombres, null, htmlAttributes: new { @class = "form - control" })
-    <br />
-    @Html.LabelFor(m => m.apellidos, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.apellidos, null, htmlAttributes: new { @class = "form - control" })
-    <br />
-    @Html.LabelFor(m => m.dui, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.dui, null, htmlAttributes: new { @class = "form - control" })
+<table>
+    <tr>
+        <td>@Html.LabelFor(m => m.nombres, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.nombres, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m => m.apellidos, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.apellidos, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
 
-    <br />
-    @Html.LabelFor(m => m.direccion, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.direccion, null, htmlAttributes: new { @class = "form - control" })
-    <br />
-    @Html.LabelFor(m => m.nit, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.nit, null, htmlAttributes: new { @class = "form - control" })
-    <input type="submit" name="boton" value="Guardar" class="btn btn-primary"/>
+    <tr>
+        <td>@Html.LabelFor(m => m.dui, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.dui, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.direccion, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.direccion, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+
+    <tr>
+        <td>@Html.LabelFor(m => m.nit, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.nit, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+       
+</table>
+<input type="submit" name="boton" value="Guardar" class="btn btn-primary" />
 }
 
-<hr />
-<form action="/Home/Search">
-    <select class="custom-select mr-sm-2" name="opciones">
-        <option selected value="cod_cliente">El codigo es...</option>
-        <option value="nombres">El nombre contiene...</option>
-        <option value="apellidos">El apellido contiene...</option>
-        <option value="dui">El dui es...</option>
-        <option value="direccion">La direccion contiene...</option>
-        <option value="nit">El nit es...</option>
-    </select>
-    <input type="text" name="valor"/>
-    <input type="submit" value="Buscar"/>
-</form>
-<hr />
-<table class="table">
-    <tr>
-        <th>Codigo</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
-        <th>DUI</th>
-        <th>Direccion</th>
-        <th>NIT</th>
-        <th>Opciones</th>
-    </tr>
-    @if (list != null)
-    {
-        foreach (Examen1ds39.Models.Cliente current in list)
+    <hr />
+    <form action="/Home/Search">
+        <select class="custom-select mr-sm-2" name="opciones">
+            <option selected value="cod_cliente">El codigo es...</option>
+            <option value="nombres">El nombre contiene...</option>
+            <option value="apellidos">El apellido contiene...</option>
+            <option value="dui">El dui es...</option>
+            <option value="direccion">La direccion contiene...</option>
+            <option value="nit">El nit es...</option>
+        </select>
+        <input type="text" name="valor" />
+        <input type="submit" value="Buscar" />
+    </form>
+    <hr />
+
+@if (list != null)
+{
+    <table class="table">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>DUI</th>
+            <th>Direccion</th>
+            <th>NIT</th>
+            <th>Opciones</th>
+        </tr>
+
+        @foreach (Examen1ds39.Models.Cliente current in list)
         {
             <tr>
                 <td>@current.cod_cliente</td>
@@ -78,6 +92,5 @@
                 </td>
             </tr>
         }
-    }
-
-</table>
+    </table>
+}

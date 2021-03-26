@@ -10,10 +10,15 @@
 @using (Html.BeginForm("Login", "Home", FormMethod.Post))
 {
     @Html.ValidationSummary("", htmlAttributes: new { @class = "text-danger" })
-    @Html.LabelFor(m => m.nombre, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.TextBoxFor(m => m.nombre, null, htmlAttributes: new { @class = "form - control" })
-    <br />
-    @Html.LabelFor(m => m.contra, null, htmlAttributes: new { @class = "text-dark" })
-    @Html.PasswordFor(m => m.contra, htmlAttributes: new { @class = "form - control" })
+<table>
+    <tr>
+        <td>@Html.LabelFor(m => m.nombre, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.TextBoxFor(m => m.nombre, null, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(m => m.contra, null, htmlAttributes: new { @class = "text-dark" })</td>
+        <td>@Html.PasswordFor(m => m.contra, htmlAttributes: new { @class = "form - control" })</td>
+    </tr>
+</table>
     <input type="submit" name="boton" value="enviar" class="btn btn-success"/>
 }
